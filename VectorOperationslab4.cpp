@@ -1,8 +1,7 @@
 /* Lab4: working with sorted array
  * Author: Faiza Khan 
- * Last modifed on: 3/1/18
- * Known bug:
- * Note: Please use assert to check for precondtition */
+ * Known bug: none
+*/
 #include <iostream>
 #include <assert.h>
 #include <vector>
@@ -75,13 +74,10 @@ int main()
 {
  	// As the NumArray can be partially filled, we use variable NumArraySize to keep track of how many numbers
 	// have been stored in the array. 
-	vector<string> vstrings;	// a string vector 
+	vector<string> vstrings;	
 	int index;
 	string value; 
 
-	//1. Fill vector<string> with data in sorted order 
-	//       Display the array afterwards 
-	// Create a sorted array 
 	string temp_str;
 	do {
 		cout << "Enter another name or -1 to end input: ";
@@ -93,9 +89,6 @@ int main()
 
 	DisplayVector(vstrings);
 
-
-  //2. TODO: Prompt the user to enter a value to search for, search for the value, and 
-  // report the result 
   	string search;
 	cout << "Enter a name to search : " << endl;
 	cin  >> search;
@@ -108,22 +101,16 @@ int main()
 		}
 	else 
 		cout << "Name was not found!" << endl;
-	
-  // 3. ToDo: Call your function to insert a value (entered by the user) into the vector
-  // Display the content of the vector afterwards 
+
 	InsertByValue(vstrings, search);
 	DisplayVector(vstrings);
 
-  // 4. ToDo: Prompt the user to enter an index (for the value to be deleted), and then delete the elements 
-  //   stored there. 
-  // Display the content of the vector after the deletion. 
 	cout << "Enter the position in the vector you would like to delete : " << endl;
 	cin >> index;
 	Delete(vstrings, index);
 	DisplayVector(vstrings);
 
-  // 5. ToDo: Prompt the user to enter an value in the vector (to be deleted), and then delete the element 
-  // Display the contents of the vector after the deletion.
+
 	cout << "Enter the value you would like to delete : " << endl;
 	cin >> value;
 	Delete(vstrings, value);
@@ -139,9 +126,7 @@ void DisplayVector (vector<string> vstrings)
  	{
 		cout << vstrings[i] << "   " << endl;
 	}
-	// uses for-loop to iterate and display. BONUS: Use iterator vstrings.begin and vstrings.end
 }
-
 
 /*
   Binary search a vector of string for a given value, return true if found, false if not found 
@@ -249,8 +234,6 @@ int InsertByValue (vector<string>& vstrings, string value)
 		vstrings.push_back(value);
 		return 0;
 	}
-
-	// middle
 	for(int i = 0; i < vstrings.size(); i++)
 	{
 		if(vstrings[i] > value)
@@ -259,19 +242,6 @@ int InsertByValue (vector<string>& vstrings, string value)
 			return i;
 		}
 	}	
-
-	// end
 	vstrings.push_back(value);
 	return vstrings.size() - 1;
-}
-	
-// extenstion on the lab (not a part of the code)
-/*
-Hi Faiza,
-
-In this context, an iterator is not a for-loop. It is what is returned from vstrings.begin(). Add that to i as the argument to erase.
-
-I will be in my office at 1:30 tomorrow. Stop by if you still need help.
-
-Regards,
-Julie Harazduk */	
+}	
